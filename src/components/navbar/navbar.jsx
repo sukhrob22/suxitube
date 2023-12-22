@@ -18,7 +18,7 @@ const Navbar = () => {
             }}
         >
             <Link to={'/'}>
-                <h1 className='logo'>SUXI</h1>
+                <h1 className='logo'>SUXITUBE</h1>
             </Link>
             <SearchBar />
             <Box />
