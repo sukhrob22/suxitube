@@ -28,14 +28,19 @@ const Main = () => {
     }, [selectedCategory]);
 
     return (
-        <Stack>
+        <Stack sx={{ backgroundColor: 'rgb(17,24,39)' }}>
             <Category
                 selectedCategoryHandler={selectedCategoryHandler}
                 selectedCategory={selectedCategory}
             />
             <Box p={2} sx={{ height: '90vh' }}>
                 <Container maxWidth={'90%'}>
-                    <Typography variant={'h4'} fontWeight={'bold'} mb={2}>
+                    <Typography
+                        variant={'h4'}
+                        fontWeight={'bold'}
+                        mb={2}
+                        color={'rgb(248,250,252)'}
+                    >
                         {selectedCategory}{' '}
                         <span style={{ color: colors.secondary }}>videos</span>
                     </Typography>

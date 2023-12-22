@@ -5,7 +5,7 @@ const Loader = () => {
         <Box minHeight={'90vh'}>
             <Stack
                 direction={'row'}
-                justifyContent={'cemter'}
+                justifyContent={'center'}
                 alignItems={'center'}
                 height={'80%'}
             >

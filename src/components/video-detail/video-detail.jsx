@@ -11,11 +11,13 @@ import {
     Visibility,
 } from '@mui/icons-material';
 import { Loader, Videos } from '../';
+import { colors } from '../../constants/colors';
 
 const VideoDetail = () => {
     const { id } = useParams();
     const [videoDetail, setVideoDetail] = useState(null);
     const [relatedVideo, setRelatedVideo] = useState([]);
+
     useEffect(() => {
         const getData = async () => {
             try {
@@ -26,6 +28,8 @@ const VideoDetail = () => {
                 const relatedData = await ApiService.fetching(
                     `search?part=snippet&relatedToVideoId=${id}&type=video`
                 );
+                // console.log(relatedData);
+
                 setRelatedVideo(relatedData.items);
             } catch (error) {
                 console.log(error);
@@ -49,29 +53,36 @@ const VideoDetail = () => {
                         className='react-player'
                         controls
                     />
-                    {videoDetail.snippet.tags.map((item, idx) => (
+                    {videoDetail?.snippet?.tags.map((item, idx) => (
                         <Chip
                             label={item}
                             key={idx}
                             sx={{
+                                border: `1px solid ${colors.secondary}`,
                                 marginTop: '10px',
                                 cursor: 'pointer',
                                 ml: '10px',
+                                color: '#fff',
                             }}
                             deleteIcon={<Tag />}
                             onDelete={() => {}}
                             variant='outlined'
                         />
                     ))}
-                    <Typography variant='h5' fontWeight='bold' p={2}>
-                        {videoDetail.snippet.title}
+                    <Typography
+                        variant='h5'
+                        fontWeight='bold'
+                        p={2}
+                        color={'#fff'}
+                    >
+                        {videoDetail?.snippet?.title}
                     </Typography>
                     <Typography
                         variant='subtitle2'
                         p={2}
-                        sx={{ opacity: '.7' }}
+                        sx={{ opacity: '.7', color: '#fff' }}
                     >
-                        {videoDetail.snippet.description}
+                        {videoDetail?.snippet?.description}
                     </Typography>
                     <Stack
                         direction={'row'}
@@ -79,6 +90,7 @@ const VideoDetail = () => {
                         alignItems='center'
                         py={1}
                         px={2}
+                        color={'#fff'}
                     >
                         <Stack
                             sx={{ opacity: 0.7 }}
@@ -88,7 +100,7 @@ const VideoDetail = () => {
                         >
                             <Visibility />
                             {parseInt(
-                                videoDetail.statistics.viewCount
+                                videoDetail?.statistics?.viewCount
                             ).toLocaleString()}{' '}
                             views
                         </Stack>
@@ -100,7 +112,7 @@ const VideoDetail = () => {
                         >
                             <FavoriteOutlined />
                             {parseInt(
-                                videoDetail.statistics.likeCount
+                                videoDetail?.statistics?.likeCount
                             ).toLocaleString()}{' '}
                             likes
                         </Stack>
@@ -112,7 +124,7 @@ const VideoDetail = () => {
                         >
                             <MarkChatRead />
                             {parseInt(
-                                videoDetail.statistics.commentCount
+                                videoDetail?.statistics?.commentCount
                             ).toLocaleString()}{' '}
                             comments
                         </Stack>
@@ -128,14 +140,14 @@ const VideoDetail = () => {
                                 marginTop='5px'
                             >
                                 <Avatar
-                                    alt={videoDetail.snippet.channelTitle}
+                                    alt={videoDetail?.snippet?.channelTitle}
                                     src={
-                                        videoDetail.snippet.thumbnails.default
-                                            .url
+                                        videoDetail?.snippet?.thumbnails
+                                            ?.default?.url
                                     }
                                 />
                                 <Typography variant='subtitle2' color='gray'>
-                                    {videoDetail.snippet.channelTitle}
+                                    {videoDetail?.snippet?.channelTitle}
                                     <CheckCircle
                                         sx={{
                                             fontSize: '12px',
@@ -156,7 +168,8 @@ const VideoDetail = () => {
                     overflow={'scroll'}
                     maxHeight={'120vh'}
                 >
-                    <Videos videos={relatedVideo && relatedVideo} />
+                    {' '}
+                    <Videos videos={relatedVideo} />
                 </Box>
             </Box>
         </Box>

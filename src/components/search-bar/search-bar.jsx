@@ -24,6 +24,7 @@ const SearchBar = () => {
                 border: `1px solid ${colors.secondary}`,
                 pl: 2,
                 boxShadow: 'none',
+                backgroundColor: 'rgb(17,24,39)',
             }}
         >
             <input
@@ -33,7 +34,7 @@ const SearchBar = () => {
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
             />
-            <IconButton type='submit'>
+            <IconButton type='submit' sx={{ color: 'rgb(59,130,246)' }}>
                 <Search />
                 {/* <i className='fa-solid fa-magnifying-glass'></i> */}
             </IconButton>

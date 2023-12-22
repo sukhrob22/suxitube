@@ -18,6 +18,7 @@ const VideoCard = ({ video }) => {
                 width: { xs: '100%', sm: '360px', md: '305px' },
                 boxShadow: 'none',
                 borderRadius: 0,
+                color: 'rgb(248,250,252)',
             }}
         >
             <Link to={`/video/${video.id.videoId}`}>
@@ -38,13 +39,23 @@ const VideoCard = ({ video }) => {
                 }}
             >
                 <Link to={`/video/${video.id.videoId}`}>
-                    <Typography my={'5px'} sx={{ opacity: '.4' }}>
+                    <Typography
+                        my={'5px'}
+                        sx={{ opacity: '.4', color: 'rgb(248,250,252)' }}
+                    >
                         {moment(video?.snippet?.publishedAt).fromNow()}
                     </Typography>
-                    <Typography variant='subtitle1' fontWeight={'bold'}>
+                    <Typography
+                        variant='subtitle1'
+                        fontWeight={'bold'}
+                        color={'rgb(248,250,252)'}
+                    >
                         {video?.snippet?.title.slice(0, 50)}
                     </Typography>
-                    <Typography variant='subtitle2' sx={{ opacity: '.6' }}>
+                    <Typography
+                        variant='subtitle2'
+                        sx={{ opacity: '.6', color: 'rgb(248,250,252)' }}
+                    >
                         {video?.snippet?.description?.slice(0, 70)}
                     </Typography>
                 </Link>
@@ -56,6 +67,7 @@ const VideoCard = ({ video }) => {
                         bottom={'10px'}
                         alignItems={'center'}
                         gap={'5px'}
+                        color={'rgb(248,250,252)'}
                     >
                         <Avatar src={video?.snippet?.thumbnails?.high?.url} />
                         <Typography>

@@ -4,7 +4,10 @@ import { colors } from '../../constants/colors';
 
 const Category = ({ selectedCategoryHandler, selectedCategory }) => {
     return (
-        <Stack direction={'row'} sx={{ overflowX: 'scroll' }}>
+        <Stack
+            direction={'row'}
+            sx={{ overflowX: 'scroll', backgroundColor: 'rgb(17,24,39)' }}
+        >
             {category.map((item) => (
                 <button
                     key={item.name}
@@ -28,7 +31,9 @@ const Category = ({ selectedCategoryHandler, selectedCategory }) => {
                     >
                         {item.icon}
                     </span>
-                    <span style={{ opacity: '1' }}>{item.name} </span>
+                    <span style={{ opacity: '1', color: 'rgb(248,250,252)' }}>
+                        {item.name}{' '}
+                    </span>
                 </button>
             ))}
         </Stack>
